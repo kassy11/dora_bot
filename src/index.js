@@ -2,8 +2,6 @@ const ICON_URL = "./assets/icon.jpg"
 const API_HOME = "a170-35-225-213-163.ngrok-free.app"
 let isWaiting = false
 
-const logs = [{text: "おはよう", type: "user"}, {text: "何でも聞いてください。", type: "sys"}]
-
 function sendMessage() {
     if (isWaiting) {
         alert('返信待ちです')
@@ -30,18 +28,15 @@ function sendMessage() {
     messageElms.appendChild(botMsgElm)
 
     // gpt-APIと通信
-    logs.push({text: inputText, type: 'user'})
-    const sendPrompt = createPrompt(logs)
     const gen_callback = data => {
         const botMsgText = cleanResText(data)
-        logs.push({text: botMsgText, type: 'sys'})
         // 返ってきたメッセージで置換
         botMsgElm.getElementsByClassName("msg")[0].textContent = botMsgText
         scrollTop(messageElms)
         isWaiting = false
     }
     isWaiting = true
-    genAPI(sendPrompt, gen_callback)
+    genAPI(inputText, gen_callback)
 
     scrollTop(messageElms)
 
