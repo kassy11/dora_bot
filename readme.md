@@ -12,4 +12,4 @@
 2. 上記で発行されたURLを`chat_ui/src/index.js`の`API_HOME`に設定する
 3. ブラウザで`chat_ui/index.html`を開く
 
-<img width="400" src="example.png">
+<img width="600" src="example.png">
